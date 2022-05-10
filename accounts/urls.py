@@ -1,7 +1,8 @@
-from distutils.log import Log
+# from distutils.log import Log
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 from accounts.views import SignUpView
+
 
 urlpatterns = [
   path("login/", LoginView.as_view(), name="login"),
