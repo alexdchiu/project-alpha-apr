@@ -1,38 +1,40 @@
 {% extends 'base.html' %} {% block content %} {% load markdownify %}
-    <main>
-        <div>
-            <h1>{{ project.name }}</h1>
-            <p>{{ project.description | markdownify }}</p>
-            <h2>Tasks</h2>
-            <p>
-                <a href="{% url 'create_task' %}">Create a new task</a>
-            </p>
-            {% if project.tasks.all %}
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Assignee</th>
-                            <th>Start date</th>
-                            <th>Due date</th>
-                            <th>Is completed</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for task in project.tasks.all %}
-                            <tr>
-                                <td>{{task.name}}</td>
-                                <td>{{task.assignee}}</td>
-                                <td>{{task.start_date|date:"m/d/Y"}}</td>
-                                <td>{{task.due_date|date:"m/d/Y"}}</td>
-                                <td>{{task.is_completed|yesno:"Yes,No"}}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <p>This project has no tasks</p>
-            {% endif %}
-        </div>
-    </main>
+<main>
+  <div>
+    <h1>{{ project.name }}</h1>
+    <div class="description">{{ project.description | markdownify }}</div>
+    <h2>Tasks</h2>
+    <ul class="navigation">
+      <li class="nav-item">
+        <a href="{% url 'create_task' %}" class="create">Create a new task</a>
+      </li>
+    </ul>
+    {% if project.tasks.all %}
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Assignee</th>
+          <th>Start date</th>
+          <th>Due date</th>
+          <th>Is completed</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in project.tasks.all %}
+        <tr class="{% if forloop.counter|divisibleby:2 %}alternate{% endif %}">
+          <td>{{task.name}}</td>
+          <td>{{task.assignee}}</td>
+          <td>{{task.start_date|date:"m/d/Y"}}</td>
+          <td>{{task.due_date|date:"m/d/Y"}}</td>
+          <td>{{task.is_completed|yesno:"Yes,No"}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p class="paragraph">This project has no tasks</p>
+    {% endif %}
+  </div>
+</main>
 {% endblock %}

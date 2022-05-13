@@ -27,6 +27,19 @@ td {
   text-align: center;
 }
 
+a {
+  box-shadow: inset 0 0 0 0 #221fde;
+  color: #221fde;
+  margin: 0 -0.25rem;
+  padding: 0 0.25rem;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+a:hover {
+  box-shadow: inset 150px 0 0 0 #221fde;
+  color: white;
+}
+
 .navigation {
   display: grid;
   grid-template-columns: repeat(7, auto);
@@ -38,6 +51,15 @@ td {
 
 .nav-item {
   margin: 1em;
+}
+
+.create {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .narrow-form {
@@ -58,6 +80,20 @@ td {
   font-size: 80%;
 }
 
-.freelink {
-  text-align: center;
+.paragraph {
+  display: flex;
+  justify-content: center;
+}
+
+.description {
+  display: flex;
+  width: 60%;
+  padding: 10px;
+  margin: auto;
+  border-top: 4px dotted cadetblue;
+  border-bottom: 4px dotted cadetblue;
+}
+
+.alternate {
+  background-color: rgb(211, 236, 236);
 }
