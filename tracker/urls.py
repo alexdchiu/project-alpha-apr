@@ -18,7 +18,7 @@ from django.urls import path, include, reverse_lazy
 from django.views.generic.base import RedirectView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("projects/", include("projects.urls")),
     path(
         "",
