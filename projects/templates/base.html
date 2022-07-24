@@ -14,8 +14,9 @@
             <nav>
                 <ul class="navigation">
                     {% if user.is_authenticated %}
-                        <li class="nav-item"><a href="{% url "show_my_tasks" %}">My tasks</a></li>
-                        <li class="nav-item"><a href="{% url "list_projects" %}">My projects</a></li>
+                        <li class="nav-item"><a href="{% url "show_my_tasks" %}">My tasks ({{ incomplete.all|length }} of
+                            {{ user.tasks.all|length}} remain)</a></li>
+                        <li class="nav-item"><a href="{% url "list_projects" %}">My projects ({{ user.projects.all|length }})</a></li>
                         <li class="nav-item"><a href="{% url "logout" %}">Logout</a></li>
                     {% else %}
                         <li class="nav-item"><a href="{% url "login" %}">Login</a></li>

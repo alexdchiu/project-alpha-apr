@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.db.models import Count, Case, When
 
 # Create your models here.
 class Task(models.Model):
@@ -16,3 +16,9 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_form_kwargs(self):
+        kwargs = super(Task)
+    
+    def get_queryset(self):
+        Task.aggregate(bool_col=Count(Case(When(is_completed=True, then=1))))
